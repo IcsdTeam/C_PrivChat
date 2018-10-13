@@ -18,47 +18,45 @@ public class Control_Main extends AbstractController implements Initializable {
     VBox rootPane;
 
     @FXML
-    ComboBox<String> comChannel_ComboBox = new ComboBox<>();
+    ComboBox<String> comboBox_Channels = new ComboBox<>();
 
     @FXML
-    TextArea channelDescription;
+    TextArea txtArea_ChannelDescription;
 
     @FXML
-    Button proceedBtn;
+    Button btn_Proceed;
 
     private Boolean itemSelected = false;
 
-    private ObservableList<String> comChannels =
+    private ObservableList<String> channels =
             FXCollections.observableArrayList(
-                    "Channel 1",
-                    "Channel 2",
-                    "Channel 3"
+                    "PUC",
+                    "PSC",
+                    "P2P"
             );
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        comChannel_ComboBox.setItems(comChannels);
+        comboBox_Channels.setItems(channels);
 
     }
 
     public void proceed(){
 
-        //System.out.println("Checking...");
-
         if(itemSelected){
-            //System.out.println("Can't proceed");
-            String value = comChannel_ComboBox.getValue();
+
+            String value = comboBox_Channels.getValue();
             switch (value) {
-                case "Channel 1": {
-                    renderView(rootPane,"ViewsChannel_1/Ch1_SignIn");
+                case "PUC": {
+                    renderView(rootPane,"PUC_Main");
                     break;
                 }
-                case "Channel 2": {
-                    renderView(rootPane,"ViewsChannel_2/Ch2_SignIn");
+                case "PSC": {
+                    renderView(rootPane,"PSC_Main");
                     break;
                 }
-                case "Channel 3": {
+                case "P2P": {
                     //renderView(rootPane,);
                     break;
                 }
@@ -92,39 +90,39 @@ public class Control_Main extends AbstractController implements Initializable {
         tooltip.setFont(Font.font("", 10));
         tooltip.setGraphic(new ImageView(image));
 
-        proceedBtn.setTooltip(tooltip);
+        btn_Proceed.setTooltip(tooltip);
     }
 
     public void potential_DescriptionChange() {
 
         try {
-        String value = comChannel_ComboBox.getValue();
+        String value = comboBox_Channels.getValue();
         switch (value)
         {
-            case "Channel 1": {
-                channelDescription.setText("Public insecure channel with:\nI2P and OAuth2 technologies.");
+            case "PUC": {
+                txtArea_ChannelDescription.setText("Public Insecure Channel with:\nI2P and OAuth2 technologies.");
                 itemSelected = true;
                 break;
             }
-            case "Channel 2": {
-                channelDescription.setText("Public channel with:\nI2P,TLS and OAuth2 technologies.");
+            case "PSC": {
+                txtArea_ChannelDescription.setText("Public Secure Channel with:\nI2P,TLS and OAuth2 technologies.");
                 itemSelected = true;
                 break;
             }
-            case "Channel 3": {
-                channelDescription.setText("Peer to Peer channel.");
+            case "P2P": {
+                txtArea_ChannelDescription.setText("Private Channel:\nPeer to Peer");
                 itemSelected = true;
                 break;
             }
             default:{
-                channelDescription.setText("Select a channel.");
+                txtArea_ChannelDescription.setText("Select a channel.");
                 itemSelected = false;
                 break;
             }
 
         }
         }catch (NullPointerException ex){
-            channelDescription.setText("You have to select a channel to proceed.");
+            txtArea_ChannelDescription.setText("You have to select a channel to proceed.");
         }
 
     }

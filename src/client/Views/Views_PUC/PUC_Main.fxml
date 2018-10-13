@@ -11,11 +11,16 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #302123;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controllers.ControllersChannel_1.Ctrl_SignIn">
+<VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #302123;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controllers.Controllers_PUC.CtrlPUC_Main">
+   <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #302123;">
+         <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                  <ImageView fitHeight="400.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">>
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
                         <Image url="@../ViewImages/mainPhoto2.jpg" />
+                     </image>
                   </ImageView>
                   <Label layoutX="170.0" layoutY="138.0" prefHeight="17.0" prefWidth="91.0" text="Nickname:" textFill="#d7d7d7">
                      <font>
@@ -28,11 +33,14 @@
                         <Font name="Liberation Serif" size="12.0" />
                      </font>
                   </Button>
+               </children>
             </AnchorPane>
+         </children>
       </HBox>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="607.0" text="Developers:Christina,Dimitris,Konstantinos  AppName © 2018" textFill="#d7d7d7">
          <font>
             <Font name="Liberation Serif" size="14.0" />
          </font>
       </Label>
+   </children>
 </VBox>

@@ -1,4 +1,4 @@
-package client.Controllers.ControllersChannel_1;
+package client.Controllers.Controllers_PUC;
 
 import client.Controllers.AbstractController;
 import javafx.fxml.FXML;
@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Ctrl_SignIn extends AbstractController implements Initializable {
+public class CtrlPUC_Main extends AbstractController implements Initializable {
     @FXML
     VBox vboxCh1_SignIn;
 

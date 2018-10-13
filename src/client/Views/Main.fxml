@@ -24,7 +24,7 @@
                         <InnerShadow />
                      </effect>
                   </ImageView>
-                  <ComboBox fx:id="comChannel_ComboBox" layoutX="237.0" layoutY="179.0" onHiding="#potential_DescriptionChange" prefWidth="150.0" promptText="Channels" style="-fx-background-color: #f2eaeb;" visibleRowCount="3" />
+                  <ComboBox fx:id="comboBox_Channels" layoutX="237.0" layoutY="179.0" onHiding="#potential_DescriptionChange" prefWidth="150.0" promptText="Channels" style="-fx-background-color: #f2eaeb;" visibleRowCount="3" />
                   <Label layoutX="88.0" layoutY="183.0" prefHeight="17.0" prefWidth="149.0" text="Communication Channel" textFill="#d7d7d7">
                      <font>
                         <Font name="Liberation Serif" size="14.0" />
@@ -40,13 +40,13 @@
                         <Font name="Liberation Serif" size="14.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="channelDescription" editable="false" layoutX="237.0" layoutY="215.0" prefHeight="119.0" prefWidth="242.0" promptText="Choose a channel..." style="-fx-border-color: black;" />
+                  <TextArea fx:id="txtArea_ChannelDescription" editable="false" layoutX="237.0" layoutY="215.0" prefHeight="119.0" prefWidth="242.0" promptText="Choose a channel..." style="-fx-border-color: black;" />
                   <Label layoutX="88.0" layoutY="215.0" prefHeight="17.0" prefWidth="149.0" text="Channel Description:" textFill="#d7d7d7">
                      <font>
                         <Font name="Liberation Serif" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="proceedBtn" layoutX="427.0" layoutY="357.0" mnemonicParsing="false" onAction="#proceed" onMouseClicked="#proceedTooltip" onMouseEntered="#proceedTooltip" text="Proceed" />
+                  <Button fx:id="btn_Proceed" layoutX="427.0" layoutY="357.0" mnemonicParsing="false" onAction="#proceed" onMouseClicked="#proceedTooltip" onMouseEntered="#proceedTooltip" text="Proceed" />
                <effect>
                   <InnerShadow />
                </effect>
