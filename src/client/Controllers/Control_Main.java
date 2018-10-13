@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,63 +27,41 @@ public class Control_Main extends AbstractController implements Initializable {
 
     private Boolean itemSelected = false;
 
-    private ObservableList<String> channels =
-            FXCollections.observableArrayList(
-                    "PUC",
-                    "PSC",
-                    "P2P"
-            );
+    private final ObservableList<String> channels =
+            FXCollections.observableArrayList("PUC", "PSC", "P2P");
 
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Start of essential methods~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         comboBox_Channels.setItems(channels);
-
     }
 
     public void proceed(){
 
         if(itemSelected){
-
-            String value = comboBox_Channels.getValue();
-            switch (value) {
-                case "PUC": {
-                    renderView(rootPane,"PUC_Main");
-                    break;
-                }
-                case "PSC": {
-                    renderView(rootPane,"PSC_Main");
-                    break;
-                }
-                case "P2P": {
-                    //renderView(rootPane,);
-                    break;
-                }
-            }
+            final String selectedChannel = comboBox_Channels.getValue();
+            renderView(rootPane,selectedChannel +"_Main");
         }
     }
 
-    //Customizable UI options
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~End of essential methods~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Start Customizable UI optional methods~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     public void proceedTooltip(){
         final Tooltip tooltip = new Tooltip();
-        Image image;
+        final Image image;
 
         if(itemSelected){
-            //System.out.println(getClass());
-            image = new Image(
-                    getClass().getResourceAsStream("../Views/ViewImages/proceed.png")
-            );
-            tooltip.setText(
-                    "You can proceed!"
-            );
+
+            image = fetchViewImage("proceed.png");
+
+            tooltip.setText("You can proceed!");
         }else{
-            //System.out.println(getClass());
-            image = new Image(
-                    getClass().getResourceAsStream("../Views/ViewImages/warn1.png")
-            );
-            tooltip.setText(
-                    "You can't proceed until \nyou select a channel!"
-            );
+
+            image = fetchViewImage("warn1.png");
+
+            tooltip.setText("You can't proceed until \nyou select a channel!");
 
         }
         tooltip.setFont(Font.font("", 10));
@@ -126,8 +103,5 @@ public class Control_Main extends AbstractController implements Initializable {
         }
 
     }
-
-
-
-
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~End Customizable UI optional methods~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 }
