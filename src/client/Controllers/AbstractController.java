@@ -1,70 +1,44 @@
 package client.Controllers;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
-
 import java.io.IOException;
 
 public abstract class AbstractController {
-    protected VBox currentPane;           //Gia kremasma twn elements twn FXML grafikwn.
-    //protected Authentication authEntity;  //ontothta me leitoyrgies Session
 
-    //Me8odos emfanishs epilegmenoy FXML grafikoy arxeioy,me bash to onoma toy arxeioy FXML kai toy pane poy brisketai ws riza toy FXML.
-    protected final void renderView(VBox rootPane,String view) {
+    /*Method of rendering new FXML file.
+        @param rootPane:VBox variable that contains the root container where all the new GUI children will be hanged on.
+        @param view:String variable that contains the convention filename(eg."PUC_Main") of the concrete fxml file.
+    */
+     protected final void renderView(VBox rootPane,String view) {
 
             VBox pane = getViewFile(view);
 
             rootPane.getChildren().setAll(pane);
     }
 
-
-    //Me8odos emfanishs arxeioy FXML grafikoy View kai perasma sto controller toy FXML aytoy stoixeia gia to Session.
-    /*protected final void renderView(VBox rootPane, String view, Session session) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../Views/" + view + ".fxml"));
-            VBox pane = loader.load();
-            AbstractController controller;
-            controller = loader.getController();
-           // controller.setAuthEntity(authEntity);
-
-            rootPane.getChildren().setAll(pane);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }*/
+    /*Method of returning a new Image from the resource ViewImages package.
+    *  @param image:String variable that contains the name of the wanted image and its format.
+    * */
+    protected final Image fetchViewImage(String image){
+        return new Image(getClass().getResourceAsStream("../Views/ViewImages/"+image));
+    }
 
     private VBox getViewFile(String view)
     {
-        final String channel;
         final String selectedViewPath;
 
-        String items[] = view.split("_");
-        channel = items[0];
+        final String items[] = view.split("_");
 
-        switch(channel)
-        {
-            case "PUC": {
-                selectedViewPath = "../Views/Views_PUC/";
-                break;
-            }
-            case "PSC":{
-                selectedViewPath = "../Views/Views_PSC/";
-                break;
-            }
-            case "P2P":{
-                selectedViewPath = "../Views/Views_P2P/";
-                break;
-            }
-            default:{
-                selectedViewPath = "../Views/Views_PUC/";
-                break;
-            }
-        }
+        //Items[0] has the corresponded channel.
+        selectedViewPath = "../Views/Views_"+items[0]+"/";
+
         try {
             return FXMLLoader.load(getClass().getResource(selectedViewPath + view + ".fxml"));
         }catch (IOException ex) {
                 ex.printStackTrace();
+                System.out.println("FXML files have name convention.\nThey start with their corresponded channels and underscore.\neg'PUC_Main'");
         }
         return null;
     }
